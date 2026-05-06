@@ -1,0 +1,317 @@
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+:root{
+  --bg-main: #0e1116;
+  --bg-sidebar: #12161d;
+  --bg-panel: #161b22;
+  --bg-elevated: #1f2630;
+
+  --text-primary: #e6e8eb;
+  --text-secondary: #9aa4af;
+  --text-muted: #6b7280;
+
+  --accent-primary: #d4a373;
+  --accent-secondary: #6b9080;
+
+  --success: #7fb069;
+  --warning: #e9c46a;
+  --danger: #d16666;
+  --info: #8ecae6;
+
+  --border-subtle: rgba(255,255,255,0.06);
+  --focus-ring: 0 0 0 3px rgba(212,163,115,0.45);
+}
+
+/* LIGHT MODE */
+body.light{
+  --bg-main: #f4f5f7;
+  --bg-sidebar: #e5e7eb;
+  --bg-panel: #ffffff;
+  --bg-elevated: #f9fafb;
+
+  --text-primary: #1f2933;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+
+  --border-subtle: rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size:14.5px;
+  line-height:1.5;
+  background:var(--bg-main);
+  color:var(--text-primary);
+  display:flex;
+  height:100vh;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+/* Keyboard focus */
+:focus-visible{
+  outline:none;
+  box-shadow: var(--focus-ring);
+  border-radius:6px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar{
+  width:230px;
+  background:var(--bg-sidebar);
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  border-right:1px solid var(--border-subtle);
+}
+
+.logo{
+  font-size:16px;
+  font-weight:600;
+  margin-bottom:18px;
+  text-align:center;
+}
+
+.nav a{
+  display:block;
+  padding:10px 12px;
+  border-radius:6px;
+  color:var(--text-secondary);
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.nav a:hover{
+  background:var(--bg-elevated);
+  color:var(--text-primary);
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.main{
+  flex:1;
+  padding:20px 24px;
+  overflow:auto;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.scan-panel,
+.card,
+.chart-box,
+table{
+  background:var(--bg-panel);
+  border-radius:10px;
+  border:1px solid var(--border-subtle);
+}
+
+.scan-panel{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:14px;
+  margin-bottom:14px;
+}
+
+/* =========================================================
+   INPUTS & BUTTONS
+   ========================================================= */
+
+input,
+select{
+  background:var(--bg-elevated);
+  border:1px solid var(--border-subtle);
+  color:var(--text-primary);
+  padding:10px 12px;
+  border-radius:6px;
+  outline:none;
+}
+
+input::placeholder{
+  color:var(--text-muted);
+}
+
+button{
+  background:var(--accent-primary);
+  color:#1f2933;
+  border:none;
+  border-radius:6px;
+  padding:10px 16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:0.9;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin-bottom:14px;
+}
+
+.card{
+  padding:14px;
+}
+
+.card span{
+  font-size:12px;
+  color:var(--text-secondary);
+}
+
+.card h3{
+  margin:6px 0 0;
+  font-size:16px;
+  font-weight:600;
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:14px;
+}
+
+th{
+  text-align:left;
+  padding:12px;
+  font-size:13px;
+  background:var(--bg-elevated);
+  color:var(--text-secondary);
+}
+
+td{
+  padding:12px;
+  border-top:1px solid var(--border-subtle);
+}
+
+tr:hover{
+  background:rgba(255,255,255,0.03);
+}
+
+/* =========================================================
+   SEVERITY PILLS (COLOR + SHAPE)
+   ========================================================= */
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.high{ color:var(--danger); }
+.high::before{ content:"▲"; }
+
+.medium{ color:var(--warning); }
+.medium::before{ content:"■"; }
+
+.low{ color:var(--success); }
+.low::before{ content:"●"; }
+
+.info{ color:var(--info); }
+.info::before{ content:"ℹ"; }
+
+/* =========================================================
+   AUTH PAGES (LOGIN / SIGNUP)
+   ========================================================= */
+
+.box{
+  margin:auto;
+  background:var(--bg-panel);
+  padding:28px;
+  width:340px;
+  border-radius:12px;
+  border:1px solid var(--border-subtle);
+}
+
+.box h2{
+  margin-bottom:14px;
+  text-align:center;
+}
+
+.error{
+  background:rgba(209,102,102,0.15);
+  color:var(--danger);
+  padding:8px;
+  border-radius:6px;
+  margin-bottom:10px;
+  font-size:13px;
+  text-align:center;
+}
+
+.helper{
+  margin-top:12px;
+  font-size:13px;
+  color:var(--text-secondary);
+  text-align:center;
+}
+
+.helper a{
+  color:var(--accent-primary);
+  text-decoration:none;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:900px){
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
