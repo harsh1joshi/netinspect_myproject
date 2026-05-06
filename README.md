@@ -1,3 +1,5 @@
+ONLY FOR KALI LINUX
+
 NetInspect 🚀
 
 NetInspect is a Flask-based network scanning tool that uses Nmap to detect open ports, analyze vulnerabilities, visualize severity levels, and generate exportable reports.
